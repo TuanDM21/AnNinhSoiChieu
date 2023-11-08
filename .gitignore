@@ -1,0 +1,17 @@
+__pycache__
+biometric_data*
+*pyc
+test.py
+image_data/
+test_distand.py
+runs/
+.vscode/
+data_checkin_checkout/
+test.log
+*ipynb
+dlib/
+notebooks/
+data/
+*.onnx
+outputs/
+inputs/
