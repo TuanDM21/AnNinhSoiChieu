@@ -203,7 +203,7 @@ class SCRFD:
                 kpss_list.append(pos_kpss)
         return scores_list, bboxes_list, kpss_list
 
-    def filter(self, scores_list, bboxes_list, kpss_list, input_size):
+    def filter(self, scores_list, bboxes_list, kpss_list, input_size,theshold_w,theshold_h):
         h, w = input_size
         new_scores_list, new_bboxes_list, new_kpss_list = [], [], []
         for i, bbox_obj in enumerate(bboxes_list):
@@ -212,7 +212,7 @@ class SCRFD:
             list_kps = []
             for j in range(len(bbox_obj)):
                 left, top, right, bottom = bboxes_list[i][j]
-                if abs(bottom - top)/w >= 0.05 or abs(right - left)/h >= 0.05:
+                if abs(bottom - top)/w >= theshold_w or abs(right - left)/h >= theshold_h:
                     list_kps.append(kpss_list[i][j])
                     list_box.append(bboxes_list[i][j])
                     list_score.append(scores_list[i][j])
@@ -223,7 +223,7 @@ class SCRFD:
             new_scores_list.append(list_score)
         return new_scores_list, new_bboxes_list, new_kpss_list
 
-    def detect(self, img, thresh=0.5, input_size=(640, 640), max_num=0, metric='default'):
+    def detect(self, img, thresh=0.5, input_size=(640, 640), max_num=0, metric='default',theshold_w=0.4,theshold_h=0.2):
         assert input_size is not None or self.input_size is not None
         input_size = self.input_size if input_size is None else input_size
 
@@ -241,7 +241,7 @@ class SCRFD:
         det_img[:new_height, :new_width, :] = resized_img
 
         scores_list, bboxes_list, kpss_list = self.forward(det_img, thresh)
-        scores_list, bboxes_list, kpss_list = self.filter(scores_list, bboxes_list, kpss_list, input_size)
+        scores_list, bboxes_list, kpss_list = self.filter(scores_list, bboxes_list, kpss_list, input_size,theshold_w,theshold_h)
         if len(scores_list) == 0:
             return None, None
         scores = np.vstack(scores_list)

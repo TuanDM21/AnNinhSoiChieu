@@ -17,8 +17,8 @@ from utils import check_in_out, get_data, maybe_create_folder, open_cam_usb
 from web_cam import WebcamVideoStream
 import glob
 
-face_detector = SCRFD(model_file='D:\Check-In-Check-Out-Jetson-Nano\Check-In-Check-Out-Jetson-Nano\scrfd_10g_bnkps.onnx')
-face_model = FaceModel(onnx_model_path='D:\Check-In-Check-Out-Jetson-Nano\Check-In-Check-Out-Jetson-Nano\webface_r50.onnx')
+face_detector = SCRFD(model_file='/Users/dominhtuan/Downloads/AnNinhSoiChieu/scrfd_10g_bnkps.onnx')
+face_model = FaceModel(onnx_model_path='/Users/dominhtuan/Downloads/AnNinhSoiChieu/webface_r50.onnx')
 
 width = 1280
 height = 720
@@ -66,9 +66,9 @@ def start_app(video_capture):
                     face_list.append((x1, y1, x2, y2))
                     img_save = frame[y1:y2,x1:x2]
                     # imageq = Image.fromarray(img_save)
-                    number_of_images = len(glob.glob('D:\Check-In-Check-Out-Jetson-Nano\Check-In-Check-Out-Jetson-Nano\image_save\*'))
+                    number_of_images = len(glob.glob('/Users/dominhtuan/Downloads/AnNinhSoiChieu/image_save/*'))
                     if  number_of_images < 4:
-                        cv2.imwrite(f'image_save\output_image_{number_of_images +1}.jpg', img_save)
+                        cv2.imwrite(f'image_save/output_image_{number_of_images +1}.jpg', img_save)
                     # pass
 
             if kpss is not None and frame_index % face_step == 0:

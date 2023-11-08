@@ -8,7 +8,6 @@ runs/
 .vscode/
 data_checkin_checkout/
 test.log
-*ipynb
 dlib/
 notebooks/
 data/

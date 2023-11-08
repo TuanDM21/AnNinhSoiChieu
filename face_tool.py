@@ -9,8 +9,8 @@ import logging
 from face_model import FaceModel
 from scrfd import SCRFD
 
-detector = SCRFD(model_file='D:\Check-In-Check-Out-Jetson-Nano\Check-In-Check-Out-Jetson-Nano\scrfd_10g_bnkps.onnx')
-model = FaceModel(onnx_model_path='D:\Check-In-Check-Out-Jetson-Nano\Check-In-Check-Out-Jetson-Nano\webface_r50.onnx')
+detector = SCRFD(model_file='/Users/dominhtuan/Downloads/AnNinhSoiChieu/scrfd_10g_bnkps.onnx')
+model = FaceModel(onnx_model_path='/Users/dominhtuan/Downloads/AnNinhSoiChieu/webface_r50.onnx')
 
 logger = logging.getLogger(__name__)
 
