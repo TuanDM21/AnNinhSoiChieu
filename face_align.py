@@ -23,6 +23,8 @@ def estimate_norm(lmk, image_size=112,mode='arcface'):
     tform.estimate(lmk, dst)
     M = tform.params[0:2, :]
     return M
+    return M;
+
 
 def norm_crop(img, landmark, image_size=112, mode='arcface'):
     M = estimate_norm(landmark, image_size, mode)

@@ -29,7 +29,7 @@ def encode_face(face_images: typing.List[str]) -> typing.List[np.ndarray]:
         # try:
         #     for orientation in ExifTags.TAGS.keys():
         #         if ExifTags.TAGS[orientation] == 'Orientation':
-        #             break
+            #             break
 
         #         exif = dict(image._getexif().items())
 

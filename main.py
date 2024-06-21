@@ -11,13 +11,15 @@ logging.basicConfig(
     handlers=[
         logging.FileHandler('test.log', mode='w'),
         logging.StreamHandler()
+
     ]
 )
 logger = logging.getLogger(__name__)
 
 
 def main():
-    engine = Engine(show=True, flip_view=True, webcam_id=0, custom_objects=[FaceDetector(), FPSmetric()])
+    engine = Engine(show=True, flip_view=True, webcam_id=0, custom_objects=[FaceDet eector(), FPSmetric()])
     engine.run()
 
 main()
+
